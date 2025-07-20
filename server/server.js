@@ -5,7 +5,11 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const { Server } = require('socket.io');
 const roomRoutes = require('./routes/roomRoutes');
-const socketHandler = require('./socketServer'); // ✅ point to the right file
+const socketHandler = require('./socketServer');
+
+
+require('dotenv').config();
+
 
 const app = express();
 const server = http.createServer(app);
@@ -23,7 +27,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect('mongodb://localhost:27017/whiteboard')
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ MongoDB Connected'))
   .catch(err => console.error('❌ MongoDB Error:', err));
 
