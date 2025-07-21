@@ -26,10 +26,9 @@ function Whiteboard() {
         if (socket && roomId) {
             socket.emit('leave-room', { roomId });
         }
-        navigate('/'); // Navigate back to homepage or room join page
+        navigate('/');
     };
 
-    // 🔁 Join room on mount
     useEffect(() => {
         socket.emit('join-room', { roomId });
 
@@ -38,7 +37,6 @@ function Whiteboard() {
         };
     }, [socket, roomId]);
 
-    // 👥 Listen for user count updates
     useEffect(() => {
         socket.on('update-user-count', (count) => {
             setUserCount(count);
@@ -49,7 +47,6 @@ function Whiteboard() {
         };
     }, [socket]);
 
-    // 🖱️ Cursor tracking
     useEffect(() => {
         let lastEmit = 0;
         const handleMouseMove = (e) => {

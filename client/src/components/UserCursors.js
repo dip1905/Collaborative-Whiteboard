@@ -20,7 +20,6 @@ const UserCursors = ({ socket }) => {
         return prev;
       });
 
-      // Reset timeout to hide cursor
       if (timeoutRef.current[userId]) clearTimeout(timeoutRef.current[userId]);
       timeoutRef.current[userId] = setTimeout(() => {
         setCursors((prev) => {
@@ -28,7 +27,7 @@ const UserCursors = ({ socket }) => {
           delete updated[userId];
           return updated;
         });
-      }, 10000); // 10 seconds inactivity
+      }, 10000);
     });
 
     socket.on('user-disconnected', (userId) => {

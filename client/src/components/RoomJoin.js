@@ -15,7 +15,7 @@ function RoomJoin() {
         try {
             const res = await axios.post('http://192.168.31.35:5000/api/rooms/create', { roomId });
             if (res.data.success) {
-                navigate(`/whiteboard/${res.data.roomId}`); // ✅ Correct
+                navigate(`/whiteboard/${res.data.roomId}`);
 
             }
         } catch (err) {

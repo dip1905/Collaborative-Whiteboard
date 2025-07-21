@@ -18,7 +18,7 @@ function DrawingCanvas({ color, strokeWidth, clearSignal }) {
       if (socket?.emit) {
         socket.emit('cursor-move', { x, y, roomId });
       }
-    }, 16) // ~60fps
+    }, 16)
   );
 
   useEffect(() => {
@@ -117,7 +117,7 @@ function DrawingCanvas({ color, strokeWidth, clearSignal }) {
         return updated;
       });
       delete timeoutsRef.current[userId];
-    }, 10000); // Inactive after 10s
+    }, 10000);
   });
 
   socket.on('user-disconnected', (userId) => {

@@ -1,4 +1,3 @@
-// client/src/components/socket.js
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { io } from 'socket.io-client';
 
@@ -12,7 +11,7 @@ export function SocketProvider({ children }) {
     socketRef.current = io('http://192.168.31.35:5000');
 
     socketRef.current.on('connect', () => {
-      setSocketReady(true); // ✅ Only expose the socket when connected
+      setSocketReady(true);
     });
 
     return () => {
@@ -20,7 +19,7 @@ export function SocketProvider({ children }) {
     };
   }, []);
 
-  if (!socketReady) return null; // or show loading UI
+  if (!socketReady) return null;
 
   return (
     <SocketContext.Provider value={socketRef.current}>

@@ -2,27 +2,26 @@ const Room = require('./models/Room');
 
 function socketHandler(io) {
   const roomUsers = {};
-  const strokeBuffers = {}; // { roomId: { buffer: [], timer: Timeout } }
+  const strokeBuffers = {};
 
-  // Periodic room cleanup
   setInterval(async () => {
     const cutoff = new Date(Date.now() - 24 * 60 * 60 * 1000);
     try {
       const result = await Room.deleteMany({ lastActivity: { $lt: cutoff } });
       if (result.deletedCount > 0) {
-        console.log(`🧹 Cleaned up ${result.deletedCount} inactive rooms`);
+        console.log(`Cleaned up ${result.deletedCount} inactive rooms`);
       }
     } catch (err) {
-      console.error('❌ Error cleaning up rooms:', err);
+      console.error('Error cleaning up rooms:', err);
     }
-  }, 60 * 60 * 1000); // run hourly
+  }, 60 * 60 * 1000);
 
   io.on('connection', (socket) => {
-    console.log('🔌 User connected:', socket.id);
+    console.log('User connected:', socket.id);
 
     socket.on('join-room', async ({ roomId }) => {
       socket.join(roomId);
-      console.log(`👥 User ${socket.id} joined room ${roomId}`);
+      console.log(`User ${socket.id} joined room ${roomId}`);
 
       if (!roomUsers[roomId]) roomUsers[roomId] = new Set();
       roomUsers[roomId].add(socket.id);
@@ -35,7 +34,7 @@ function socketHandler(io) {
           socket.emit('drawing-history', room.drawingData);
         }
       } catch (err) {
-        console.error('❌ Error fetching drawing history:', err);
+        console.error('Error fetching drawing history:', err);
       }
     });
 
@@ -51,7 +50,6 @@ function socketHandler(io) {
     socket.on('draw-move', ({ roomId, startX, startY, x, y, color, strokeWidth }) => {
       socket.to(roomId).emit('draw-move', { startX, startY, x, y, color, strokeWidth });
 
-      // Batching logic
       if (!strokeBuffers[roomId]) {
         strokeBuffers[roomId] = { buffer: [], timer: null };
       }
@@ -105,7 +103,7 @@ function socketHandler(io) {
           }
         );
       } catch (err) {
-        console.error('❌ Error saving clear-canvas:', err);
+        console.error('Error saving clear-canvas:', err);
       }
     });
 

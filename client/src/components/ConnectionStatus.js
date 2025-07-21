@@ -16,7 +16,7 @@ function ConnectionStatus() {
     socket.on('disconnect', () => setStatus('disconnected'));
     socket.on('reconnect_attempt', () => setStatus('reconnecting'));
 
-    updateStatus(); // initial status
+    updateStatus();
 
     return () => {
       socket.off('connect');

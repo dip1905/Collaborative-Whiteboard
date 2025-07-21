@@ -1,17 +1,16 @@
-// client/src/components/Toolbar.js
 import React from 'react';
 import { useSocket } from './socket';
 import { useParams } from 'react-router-dom';
 
 function Toolbar({ color, setColor, strokeWidth, setStrokeWidth, onClear }) {
-  const socket = useSocket(); // ✅ Get the socket
-  const { roomId } = useParams(); // ✅ Get the roomId from URL
+  const socket = useSocket();
+  const { roomId } = useParams();
 
   const handleClear = () => {
     if (socket && socket.emit) {
-      socket.emit('clear-canvas', { roomId }); // ✅ Emit the event to server
+      socket.emit('clear-canvas', { roomId });
     }
-    onClear(); // Also update local state (like clearSignal)
+    onClear();
   };
 
   return (

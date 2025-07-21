@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Room = require('../models/Room');
 
-// ✅ Create Room Route
 router.post('/create', async (req, res) => {
   const { roomId, roomName } = req.body;
 
@@ -31,7 +30,6 @@ router.post('/create', async (req, res) => {
   }
 });
 
-// ✅ Join Room Route
 router.post('/join', async (req, res) => {
   const { roomId } = req.body;
 
