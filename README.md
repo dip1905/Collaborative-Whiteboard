@@ -1,8 +1,8 @@
-# 🧑‍🤝‍🧑 Collaborative Whiteboard (MERN + Socket.IO)
+# Collaborative Whiteboard (MERN + Socket.IO)
 
 A real-time collaborative whiteboard application built with the MERN stack and WebSockets (Socket.IO).
 
-## 🚀 Features
+## Features
 
 - Join or create rooms using 6+ character codes (no auth needed)
 - Real-time drawing with:
@@ -20,18 +20,22 @@ A real-time collaborative whiteboard application built with the MERN stack and W
 
 ---
 
-## ⚙️ Technologies
+Technologies
 
-| Layer     | Stack              |
-|-----------|--------------------|
-| Frontend  | React.js (CRA), CSS |
-| Backend   | Node.js, Express.js |
-| Database  | MongoDB             |
-| Realtime  | Socket.IO           |
+Layer:-
+  Frontend
+  Backend
+  Database
+  Realtime
+Stack:-
+  React.js (CRA), CSS
+  Node.js, Express.js
+  MongoDB
+  Socket.IO 
 
 ---
 
-## 🛠️ Setup Instructions
+## Setup Instructions
 
 ### 1. Clone the Repository
 
@@ -64,7 +68,7 @@ Frontend will open in your browser at: `http://localhost:3000`
 
 ---
 
-## 📡 REST API Endpoints
+## REST API Endpoints
 
 | Method | Endpoint             | Description             |
 |--------|----------------------|-------------------------|
@@ -74,7 +78,7 @@ Frontend will open in your browser at: `http://localhost:3000`
 
 ---
 
-## 🎯 Socket.IO Events
+## Socket.IO Events
 
 ### Client → Server
 
@@ -103,7 +107,7 @@ Frontend will open in your browser at: `http://localhost:3000`
 
 ---
 
-## 🧠 Architecture Overview
+## Architecture Overview
 
 ```
 client/
@@ -131,7 +135,7 @@ server/
 
 ---
 
-## 🌐 Deployment Guide
+## Deployment Guide
 
 ### 1. Backend (Node + MongoDB)
 
@@ -171,18 +175,12 @@ Then deploy entire project from root.
 
 ---
 
-## ✅ Status
+## Status
 
 All assignment requirements are implemented and verified.
 
 ---
 
-## 📅 Deadline
-
-**Submitted before: July 21, 2025 – 11:59 AM**
-
----
-
-## 👨‍💻 Author
+## Author
 
 Dipesh Patel – MERN Stack Developer
